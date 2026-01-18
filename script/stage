@@ -28,14 +28,19 @@ DISABLE_WHITELIST=1 bundle exec jekyll build --baseurl "/${account}/${repo}"
 # 4. Add all our files
 # 5. Write a generic commit message
 printf "\n${grn}# Creating a temp Git repo...\n--------------------------------------------------${end}\n"
-cd _site && git init && git remote add staging https://ghe.io/${account}/${repo}.git && git add . && git commit -m "Staging latest changes"
+cd _site
+git init
+git remote add staging https://ghe.io/${account}/${repo}.git
+git add .
+git commit -m "Staging latest changes"
 
 # Push the site
 #
 # Push the new `_site` temporary repo to our remote staging repo, then remove
 # the remote again to do it all over again afterwards.
 printf "\n${grn}# Publishing...\n--------------------------------------------------${end}\n"
-git push staging master:gh-pages --force && git remote rm staging
+git push staging master:gh-pages --force
+git remote rm staging
 
 # Celebrate and open the staging site
 printf "\n${grn}# Success!${end}\n"
