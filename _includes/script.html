@@ -7,7 +7,7 @@
 				link.rel = 'stylesheet';
 				link.type = 'text/css';
 				link.href = window.location.search.match(/print-pdf/gi) ? 
-					'{{ site.baseurl }}/css/print/pdf.css' : 
+					'{{ site.baseurl }}/node_modules/reveal.js/css/print/pdf.css' : 
 					'{{ site.baseurl }}/node_modules/reveal.js/css/print/paper.css';
 				document.head.appendChild(link);
 			})();
